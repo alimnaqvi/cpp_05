@@ -26,7 +26,7 @@ const std::string& Bureaucrat::getName() const {
     return mName;
 }
 
-const int Bureaucrat::getGrade() const {
+int Bureaucrat::getGrade() const {
     return mGrade;
 }
 
@@ -48,7 +48,7 @@ void Bureaucrat::decrementGrade() {
 
 Bureaucrat::GradeTooHighException::GradeTooHighException( std::string_view error ) : mError{ error } {}
 
-const char* Bureaucrat::GradeTooHighException::what() const {
+const char* Bureaucrat::GradeTooHighException::what() const noexcept {
     return mError.c_str();
 }
 
@@ -56,7 +56,7 @@ const char* Bureaucrat::GradeTooHighException::what() const {
 
 Bureaucrat::GradeTooLowException::GradeTooLowException( std::string_view error ) : mError{ error } {}
 
-const char* Bureaucrat::GradeTooLowException::what() const {
+const char* Bureaucrat::GradeTooLowException::what() const noexcept {
     return mError.c_str();
 }
 

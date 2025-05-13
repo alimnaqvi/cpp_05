@@ -17,7 +17,7 @@ class Bureaucrat {
     Bureaucrat( std::string_view initName, int grade );
 
     const std::string& getName() const;
-    const int          getGrade() const;
+    int                getGrade() const;
 
     void incrementGrade();
     void decrementGrade();
