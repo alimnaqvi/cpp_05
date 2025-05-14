@@ -6,6 +6,8 @@
 #include <iostream>
 #include <exception>
 
+class Form;
+
 class Bureaucrat {
   public:
     // Orthodox canonical form

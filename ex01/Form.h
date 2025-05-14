@@ -7,6 +7,8 @@
 #include <iomanip>
 #include <exception>
 
+class Bureaucrat;
+
 class Form {
   public:
     // Orthodox canonical form requirements
@@ -21,8 +23,8 @@ class Form {
     // Getters
     const std::string& getName() const;
     bool               isSigned() const;
-    const int          getGradeToSign() const;
-    const int          getGradeToExecute() const;
+    int          getGradeToSign() const;
+    int          getGradeToExecute() const;
 
     // Change form status (if bureaucrat’s grade is high enough)
     void beSigned( const Bureaucrat& bureaucrat );

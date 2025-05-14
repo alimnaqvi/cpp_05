@@ -38,11 +38,11 @@ bool Form::isSigned() const {
     return mIsSigned;
 }
 
-const int Form::getGradeToSign() const {
+int Form::getGradeToSign() const {
     return mGradeToSign;
 }
 
-const int Form::getGradeToExecute() const {
+int Form::getGradeToExecute() const {
     return mGradeToExecute;
 }
 
