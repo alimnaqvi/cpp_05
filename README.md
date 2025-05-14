@@ -8,3 +8,5 @@ Core concepts learned and applied:
   - Exception classes
   - Aborting object construction by throwing exception in the constructor body
   - std::exception and deriving own classes from it
+- Exercise 02:
+  - Further practicing and deepening understanding of abstract classes, inheritance, virtual functions, file I/O, and DRY principle

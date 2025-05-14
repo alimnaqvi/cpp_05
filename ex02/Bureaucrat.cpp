@@ -54,12 +54,23 @@ void Bureaucrat::decrementGrade() {
 
 /* (Attempt to) sign a form */
 
-void Bureaucrat::signForm( Form& form ) const {
+void Bureaucrat::signForm( AForm& form ) const {
     try {
         form.beSigned( *this );
         std::cout << mName << " signed " << form.getName() << '\n';
     } catch ( const std::exception& e ) {
         std::cerr << mName << " couldn't sign " << form.getName() << " because " << e.what() << '\n';
+    }
+}
+
+/* (Attempt to) execute a form */
+
+void Bureaucrat::executeForm( AForm const& form ) const {
+    try {
+        form.execute( *this );
+        std::cout << mName << " executed " << form.getName() << '\n';
+    } catch ( const std::exception& e ) {
+        std::cerr << mName << " couldn't execute " << form.getName() << " because " << e.what() << '\n';
     }
 }
 
