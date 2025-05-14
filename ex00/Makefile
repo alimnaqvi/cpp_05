@@ -1,20 +1,27 @@
 NAME = ex00
-CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++17
+CXX = c++
+CXXFLAGS = -Wall -Wextra -Werror -std=c++17 -MMD -MP
 
 SRCS = main.cpp Bureaucrat.cpp
-OBJS = $(SRCS:.cpp=.o)
+OBJ_DIR = temp_files
+OBJS = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
+DEPENDS = $(OBJS:.o=.d)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+-include $(DEPENDS)
 
-%.o: %.cpp Makefile
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $(NAME)
+
+$(OBJ_DIR)/%.o: %.cpp Makefile | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
 
 clean:
-	rm -rf $(OBJS)
+	rm -rf $(OBJ_DIR)
 
 fclean: clean
 	rm -rf $(NAME)
