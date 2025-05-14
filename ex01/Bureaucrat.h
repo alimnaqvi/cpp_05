@@ -1,6 +1,7 @@
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
 
+#include "Form.h"
 #include <string>
 #include <iostream>
 #include <exception>
@@ -20,9 +21,12 @@ class Bureaucrat {
     const std::string& getName() const;
     int                getGrade() const;
 
-    // Increment and decrement grade members
+    // Increment and decrement the private grade member
     void incrementGrade();
     void decrementGrade();
+
+    // (Attempt to) sign a form
+    void signForm( Form& form ) const;
 
     // Exception classes
     class GradeTooHighException : public std::exception {

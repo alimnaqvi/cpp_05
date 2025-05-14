@@ -52,7 +52,18 @@ void Bureaucrat::decrementGrade() {
     ++mGrade;
 }
 
-/* Grade too high exception constructor and `what` member: */
+/* (Attempt to) sign a form */
+
+void Bureaucrat::signForm( Form& form ) const {
+    try {
+        form.beSigned( *this );
+        std::cout << mName << " signed " << form.getName() << '\n';
+    } catch ( const std::exception& e ) {
+        std::cout << mName << " couldn't sign " << form.getName() << " because " << e.what() << '\n';
+    }
+}
+
+/* Grade too high exception constructor and `what` member */
 
 Bureaucrat::GradeTooHighException::GradeTooHighException( std::string_view error ) : mError{ error } {}
 
@@ -60,7 +71,7 @@ const char* Bureaucrat::GradeTooHighException::what() const noexcept {
     return mError.c_str();
 }
 
-/* Grade too low exception constructor and `what` member: */
+/* Grade too low exception constructor and `what` member */
 
 Bureaucrat::GradeTooLowException::GradeTooLowException( std::string_view error ) : mError{ error } {}
 
@@ -68,7 +79,7 @@ const char* Bureaucrat::GradeTooLowException::what() const noexcept {
     return mError.c_str();
 }
 
-/* Insertion operator overload: */
+/* Insertion operator overload */
 
 std::ostream& operator<<( std::ostream& out, const Bureaucrat& bureaucrat ) {
     out << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << '.';
