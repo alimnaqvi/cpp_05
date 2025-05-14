@@ -8,8 +8,6 @@
 #include <string>
 #include <exception>
 
-#define TREE "Test tree" // ! Need to implement
-
 class AForm;
 class Bureaucrat;
 

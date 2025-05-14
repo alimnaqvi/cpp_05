@@ -30,6 +30,32 @@ const std::string& ShrubberyCreationForm::getTarget() const {
     return mTarget;
 }
 
+void drawTree( std::ofstream& outfileStream ) {
+    int         heightWithoutTrunk{ 15 };
+    int         trunkHeight{ 5 };
+    std::string leef{ "*" };
+    std::string trunk{ "▓" };
+
+    for ( int i = 0; i < heightWithoutTrunk; ++i ) {
+        for ( int j = heightWithoutTrunk - i; j > 0; --j )
+            outfileStream << " ";
+
+        for ( int j = 0; j < i; ++j )
+            outfileStream << leef;
+
+        for ( int j = 0; j < i; ++j )
+            outfileStream << leef;
+
+        outfileStream << '\n';
+    }
+
+    for ( int i = 0; i < trunkHeight; ++i ) {
+        for ( int j = 0; j < heightWithoutTrunk - 1; ++j )
+            outfileStream << " ";
+        outfileStream << trunk << '\n';
+    }
+}
+
 /* Execute this specific form’s action on target */
 
 void ShrubberyCreationForm::specificExecute() const {
@@ -38,9 +64,10 @@ void ShrubberyCreationForm::specificExecute() const {
     std::ofstream outfileStream{ outfileName };
     if ( !outfileStream )
         throw CouldNotOpenFile{ outfileName + " could not be opened for writing." };
-    
-    for (int i = 0; i < 5; ++i) {
-        outfileStream << TREE << "\n\n";
+
+    for ( int i = 0; i < 5; ++i ) {
+        drawTree( outfileStream );
+        outfileStream << "\n\n";
     }
 
     outfileStream.close();
