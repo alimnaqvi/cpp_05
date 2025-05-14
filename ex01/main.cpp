@@ -72,7 +72,7 @@ int main() {
         std::cout << "----------------------------------" << '\n';
 
     } catch ( const std::exception& e ) {
-        std::cout << "An exception occurred: " << e.what() << '\n';
+        std::cerr << "An exception occurred: " << e.what() << '\n';
     }
 
     return 0;

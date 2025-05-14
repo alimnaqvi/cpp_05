@@ -23,8 +23,8 @@ class Form {
     // Getters
     const std::string& getName() const;
     bool               isSigned() const;
-    int          getGradeToSign() const;
-    int          getGradeToExecute() const;
+    int                getGradeToSign() const;
+    int                getGradeToExecute() const;
 
     // Change form status (if bureaucrat’s grade is high enough)
     void beSigned( const Bureaucrat& bureaucrat );
@@ -42,6 +42,15 @@ class Form {
     class GradeTooLowException : public std::exception {
       public:
         GradeTooLowException( std::string_view error );
+        const char* what() const noexcept override;
+
+      private:
+        const std::string mError{};
+    };
+
+    class FormAlreadySigned : public std::exception {
+      public:
+        FormAlreadySigned( std::string_view error );
         const char* what() const noexcept override;
 
       private:

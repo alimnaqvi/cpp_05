@@ -55,11 +55,6 @@ void Bureaucrat::decrementGrade() {
 /* (Attempt to) sign a form */
 
 void Bureaucrat::signForm( Form& form ) const {
-    if ( form.isSigned() ) {
-        std::cout << "Form " << form.getName() << " is already signed!" << '\n';
-        return;
-    }
-
     try {
         form.beSigned( *this );
         std::cout << mName << " signed " << form.getName() << '\n';

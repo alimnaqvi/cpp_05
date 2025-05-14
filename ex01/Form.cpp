@@ -49,10 +49,12 @@ int Form::getGradeToExecute() const {
 /* Change form status (if bureaucrat’s grade is high enough) */
 
 void Form::beSigned( const Bureaucrat& bureaucrat ) {
-    if ( bureaucrat.getGrade() <= mGradeToSign )
-        mIsSigned = true;
-    else
+    if (mIsSigned)
+        throw FormAlreadySigned{"form is already signed!"};
+    else if (bureaucrat.getGrade() > mGradeToSign)
         throw GradeTooLowException{ "the bureacrat's grade is too low to sign this form!" };
+    else
+        mIsSigned = true;
 }
 
 /* Grade too high exception constructor and `what` member */
@@ -68,6 +70,14 @@ const char* Form::GradeTooHighException::what() const noexcept {
 Form::GradeTooLowException::GradeTooLowException( std::string_view error ) : mError{ error } {}
 
 const char* Form::GradeTooLowException::what() const noexcept {
+    return mError.c_str();
+}
+
+/* Form already signed exception constructor and `what` member */
+
+Form::FormAlreadySigned::FormAlreadySigned( std::string_view error ) : mError{ error } {}
+
+const char* Form::FormAlreadySigned::what() const noexcept {
     return mError.c_str();
 }
 
