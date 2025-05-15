@@ -8,19 +8,19 @@
 
 int main() {
     try {
-        Bureaucrat A {"Jim", 1};
-    
-        RobotomyRequestForm a {"Megawatt"};
+        Bureaucrat A{ "Jim", 1 };
+
+        RobotomyRequestForm a{ "Megawatt" };
         std::cout << a << '\n';
         std::cout << "Target: " << a.getTarget() << '\n';
 
-        A.executeForm(a);
+        A.executeForm( a );
 
-        A.signForm(a);
+        A.signForm( a );
 
-        A.executeForm(a);
+        A.executeForm( a );
 
-    } catch (const std::exception& e) {
+    } catch ( const std::exception& e ) {
         std::cerr << "An exception occurred: " << e.what() << '\n';
     }
 

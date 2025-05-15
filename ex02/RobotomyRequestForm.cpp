@@ -2,8 +2,7 @@
 
 /* Orthodox canonical form requirements */
 
-RobotomyRequestForm::RobotomyRequestForm()
-    : AForm{ "Robotomy Request Form", 72, 45 }, mTarget{ "defaultTarget" } {}
+RobotomyRequestForm::RobotomyRequestForm() : AForm{ "Robotomy Request Form", 72, 45 }, mTarget{ "defaultTarget" } {}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& other )
     : AForm{ other.getName(), other.getGradeToSign(), other.getGradeToExecute() }, mTarget{ other.mTarget } {}
@@ -42,7 +41,7 @@ void RobotomyRequestForm::specificExecute() const {
     std::uniform_int_distribution random100{ 1, 100 };
 
     // Generate a random number between 1 and 100; Robotomy is successful when the number is greater than 50
-    if (random100(mt) > 50)
+    if ( random100( mt ) > 50 )
         std::cout << mTarget << " has been successfully robotomized." << '\n';
     else
         std::cout << "Robotomy failed on " << mTarget << ".\n";
