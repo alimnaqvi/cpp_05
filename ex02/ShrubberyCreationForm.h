@@ -43,4 +43,6 @@ class ShrubberyCreationForm : public AForm {
     std::string mTarget;
 };
 
+std::ostream& operator<<( std::ostream& out, const ShrubberyCreationForm& form );
+
 #endif /* SHRUBBERYCREATIONFORM_H */

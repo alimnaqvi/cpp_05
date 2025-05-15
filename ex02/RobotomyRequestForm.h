@@ -33,4 +33,6 @@ class RobotomyRequestForm : public AForm {
     std::string mTarget;
 };
 
+std::ostream& operator<<( std::ostream& out, const RobotomyRequestForm& form );
+
 #endif /* ROBOTOMYREQUESTFORM_H */

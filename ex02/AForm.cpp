@@ -50,9 +50,9 @@ int AForm::getGradeToExecute() const {
 
 void AForm::beSigned( const Bureaucrat& bureaucrat ) {
     if ( mIsSigned )
-        throw FormAlreadySigned{ "form is already signed!" };
+        throw FormAlreadySigned{ "the form is already signed!" };
     else if ( bureaucrat.getGrade() > mGradeToSign )
-        throw GradeTooLowException{ "the bureacrat's grade is too low to sign this form!" };
+        throw GradeTooLowException{ "the bureaucrat's grade is too low to sign this form!" };
     else
         mIsSigned = true;
 }
@@ -63,7 +63,7 @@ void AForm::execute( Bureaucrat const& executor ) const {
     if ( !mIsSigned )
         throw FormMustBeSigned{ "form must be signed in order to be executed!" };
     else if ( executor.getGrade() > mGradeToExecute )
-        throw GradeTooLowException{ "the bureacrat's grade is too low to execute this form!" };
+        throw GradeTooLowException{ "the bureaucrat's grade is too low to execute this form!" };
     else
         specificExecute();
 }

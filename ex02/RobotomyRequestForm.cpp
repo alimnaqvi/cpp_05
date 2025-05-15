@@ -46,3 +46,15 @@ void RobotomyRequestForm::specificExecute() const {
     else
         std::cout << "Robotomy failed on " << mTarget << ".\n";
 }
+
+/* Insertion operator overload */
+
+std::ostream& operator<<( std::ostream& out, const RobotomyRequestForm& form ) {
+    out << "Form name: " << form.getName()
+        << ", Is signed: " << std::boolalpha << form.isSigned()
+        << ", Minimum grade to sign: " << form.getGradeToSign()
+        << ", Minimum grade to execute: " << form.getGradeToExecute()
+        << ", Target: " << form.getTarget() << '.';
+
+    return out;
+}

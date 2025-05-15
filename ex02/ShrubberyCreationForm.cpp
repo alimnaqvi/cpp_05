@@ -80,3 +80,15 @@ ShrubberyCreationForm::CouldNotOpenFile::CouldNotOpenFile( std::string_view erro
 const char* ShrubberyCreationForm::CouldNotOpenFile::what() const noexcept {
     return mError.c_str();
 }
+
+/* Insertion operator overload */
+
+std::ostream& operator<<( std::ostream& out, const ShrubberyCreationForm& form ) {
+    out << "Form name: " << form.getName()
+        << ", Is signed: " << std::boolalpha << form.isSigned()
+        << ", Minimum grade to sign: " << form.getGradeToSign()
+        << ", Minimum grade to execute: " << form.getGradeToExecute()
+        << ", Target: " << form.getTarget() << '.';
+
+    return out;
+}
