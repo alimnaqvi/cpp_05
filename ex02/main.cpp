@@ -10,7 +10,7 @@ int main() {
     try {
         Bureaucrat A {"Jim", 1};
     
-        ShrubberyCreationForm a {"home"};
+        RobotomyRequestForm a {"Megawatt"};
         std::cout << a << '\n';
         std::cout << "Target: " << a.getTarget() << '\n';
 

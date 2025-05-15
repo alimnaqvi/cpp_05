@@ -10,3 +10,5 @@ Core concepts learned and applied:
   - std::exception and deriving own classes from it
 - Exercise 02:
   - Further practicing and deepening understanding of abstract classes, inheritance, virtual functions, file I/O, and DRY principle
+  - ASCII art!
+  - Randomizing function outcome (PRNGs, seeding, Mersenne Twister 19937 generator, etc.)
