@@ -2,11 +2,10 @@
 
 /* Orthodox canonical form requirements */
 
-ShrubberyCreationForm::ShrubberyCreationForm()
-    : AForm{ "Shrubbery Creation Form", 145, 137 }, mTarget{ "defaultTarget" } {}
+ShrubberyCreationForm::ShrubberyCreationForm() : ShrubberyCreationForm( "defaultTarget" ) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm& other )
-    : AForm{ other.getName(), other.getGradeToSign(), other.getGradeToExecute() }, mTarget{ other.mTarget } {}
+    : AForm( other ), mTarget{ other.mTarget } {}
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=( const ShrubberyCreationForm& other ) {
     if ( this != &other ) {
@@ -22,13 +21,27 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 /* Main parameterized constructor */
 
 ShrubberyCreationForm::ShrubberyCreationForm( std::string_view target )
-    : AForm{ "Shrubbery Creation Form", 145, 137 }, mTarget{ target } {}
+    : AForm{ "Shrubbery Creation Form", "shrubbery creation", 145, 137 }, mTarget{ target } {}
 
 /* Getter */
 
 const std::string& ShrubberyCreationForm::getTarget() const {
     return mTarget;
 }
+
+/* Return a clone of self */
+
+AForm* ShrubberyCreationForm::makeCopy() const {
+    return new ShrubberyCreationForm{ mTarget };
+}
+
+/* Return copy of self with specified target */
+
+AForm* ShrubberyCreationForm::makeCopy( std::string_view targetName ) const {
+    return new ShrubberyCreationForm{ targetName };
+}
+
+/* Helper non-member function */
 
 void drawTree( std::ofstream& outfileStream ) {
     int         heightWithoutTrunk{ 15 };
@@ -84,11 +97,9 @@ const char* ShrubberyCreationForm::CouldNotOpenFile::what() const noexcept {
 /* Insertion operator overload */
 
 std::ostream& operator<<( std::ostream& out, const ShrubberyCreationForm& form ) {
-    out << "Form name: " << form.getName()
-        << ", Is signed: " << std::boolalpha << form.isSigned()
+    out << "Form name: " << form.getName() << ", Is signed: " << std::boolalpha << form.isSigned()
         << ", Minimum grade to sign: " << form.getGradeToSign()
-        << ", Minimum grade to execute: " << form.getGradeToExecute()
-        << ", Target: " << form.getTarget() << '.';
+        << ", Minimum grade to execute: " << form.getGradeToExecute() << ", Target: " << form.getTarget() << '.';
 
     return out;
 }

@@ -25,6 +25,12 @@ class RobotomyRequestForm : public AForm {
     // Getter
     const std::string& getTarget() const;
 
+    // Return a clone of self
+    AForm* makeCopy() const override;
+
+    // Return copy of self with specified target
+    AForm* makeCopy( std::string_view targetName ) const override;
+
   protected:
     // Function to execute this specific form
     void specificExecute() const override;

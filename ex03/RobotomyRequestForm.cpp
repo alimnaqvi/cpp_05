@@ -2,10 +2,10 @@
 
 /* Orthodox canonical form requirements */
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm{ "Robotomy Request Form", 72, 45 }, mTarget{ "defaultTarget" } {}
+RobotomyRequestForm::RobotomyRequestForm() : RobotomyRequestForm( "defaultTarget" ) {}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm& other )
-    : AForm{ other.getName(), other.getGradeToSign(), other.getGradeToExecute() }, mTarget{ other.mTarget } {}
+    : AForm( other ), mTarget{ other.mTarget } {}
 
 RobotomyRequestForm& RobotomyRequestForm::operator=( const RobotomyRequestForm& other ) {
     if ( this != &other ) {
@@ -21,12 +21,24 @@ RobotomyRequestForm::~RobotomyRequestForm() {}
 /* Main parameterized constructor */
 
 RobotomyRequestForm::RobotomyRequestForm( std::string_view target )
-    : AForm{ "Robotomy Request Form", 72, 45 }, mTarget{ target } {}
+    : AForm{ "Robotomy Request Form", "robotomy request", 72, 45 }, mTarget{ target } {}
 
 /* Getter */
 
 const std::string& RobotomyRequestForm::getTarget() const {
     return mTarget;
+}
+
+/* Return a clone of self */
+
+AForm* RobotomyRequestForm::makeCopy() const {
+    return new RobotomyRequestForm{ mTarget };
+}
+
+/* Return copy of self with specified target */
+
+AForm* RobotomyRequestForm::makeCopy( std::string_view targetName ) const {
+    return new RobotomyRequestForm{ targetName };
 }
 
 /* Execute this specific form’s action on target */
@@ -50,11 +62,9 @@ void RobotomyRequestForm::specificExecute() const {
 /* Insertion operator overload */
 
 std::ostream& operator<<( std::ostream& out, const RobotomyRequestForm& form ) {
-    out << "Form name: " << form.getName()
-        << ", Is signed: " << std::boolalpha << form.isSigned()
+    out << "Form name: " << form.getName() << ", Is signed: " << std::boolalpha << form.isSigned()
         << ", Minimum grade to sign: " << form.getGradeToSign()
-        << ", Minimum grade to execute: " << form.getGradeToExecute()
-        << ", Target: " << form.getTarget() << '.';
+        << ", Minimum grade to execute: " << form.getGradeToExecute() << ", Target: " << form.getTarget() << '.';
 
     return out;
 }

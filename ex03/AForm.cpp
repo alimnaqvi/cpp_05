@@ -2,10 +2,11 @@
 
 /* Orthodox canonical form requirements */
 
-AForm::AForm() : mName{ "noName" }, mIsSigned{ false }, mGradeToSign{ 1 }, mGradeToExecute{ 1 } {}
+AForm::AForm()
+    : mName{ "noName" }, mType{ "unkownType" }, mIsSigned{ false }, mGradeToSign{ 1 }, mGradeToExecute{ 1 } {}
 
 AForm::AForm( const AForm& other )
-    : mName{ other.mName }, mIsSigned{ other.mIsSigned }, mGradeToSign{ other.mGradeToSign },
+    : mName{ other.mName }, mType{ other.mType }, mIsSigned{ other.mIsSigned }, mGradeToSign{ other.mGradeToSign },
       mGradeToExecute{ other.mGradeToExecute } {}
 
 AForm& AForm::operator=( const AForm& other ) {
@@ -20,8 +21,10 @@ AForm::~AForm() {}
 
 /* Main parameterized constructor */
 
-AForm::AForm( std::string_view initName, const int initGradeToSign, const int initGradeToExecute )
-    : mName{ initName }, mIsSigned{ false }, mGradeToSign{ initGradeToSign }, mGradeToExecute{ initGradeToExecute } {
+AForm::AForm( std::string_view initName, std::string_view initType, const int initGradeToSign,
+              const int initGradeToExecute )
+    : mName{ initName }, mType{ initType }, mIsSigned{ false }, mGradeToSign{ initGradeToSign },
+      mGradeToExecute{ initGradeToExecute } {
     if ( initGradeToSign < 1 || initGradeToExecute < 1 )
         throw GradeTooHighException{ "Grade (to sign or execute) cannot be higher than 1!" };
     else if ( initGradeToSign > 150 || initGradeToExecute > 150 )
@@ -32,6 +35,10 @@ AForm::AForm( std::string_view initName, const int initGradeToSign, const int in
 
 const std::string& AForm::getName() const {
     return mName;
+}
+
+const std::string& AForm::getType() const {
+    return mType;
 }
 
 bool AForm::isSigned() const {

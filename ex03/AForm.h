@@ -18,10 +18,12 @@ class AForm {
     virtual ~AForm();
 
     // Parameterized constructor
-    AForm( std::string_view initName, const int initGradeToSign, const int initGradeToExecute );
+    AForm( std::string_view initName, std::string_view initType, const int initGradeToSign,
+           const int initGradeToExecute );
 
     // Getters
     const std::string& getName() const;
+    const std::string& getType() const;
     bool               isSigned() const;
     int                getGradeToSign() const;
     int                getGradeToExecute() const;
@@ -31,6 +33,12 @@ class AForm {
 
     // Execute the form (if is signed and bureaucrat’s grade is high enough)
     void execute( Bureaucrat const& executor ) const;
+
+    // Return a clone of self
+    virtual AForm* makeCopy() const = 0;
+
+    // Return a copy of self with specified target
+    virtual AForm* makeCopy( std::string_view targetName ) const = 0;
 
     // Exception classes
     class GradeTooHighException : public std::exception {
@@ -75,6 +83,7 @@ class AForm {
 
   private:
     const std::string mName;
+    const std::string mType;
     bool              mIsSigned;
     const int         mGradeToSign;
     const int         mGradeToExecute;
