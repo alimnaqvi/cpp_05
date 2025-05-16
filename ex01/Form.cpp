@@ -49,9 +49,9 @@ int Form::getGradeToExecute() const {
 /* Change form status (if bureaucrat’s grade is high enough) */
 
 void Form::beSigned( const Bureaucrat& bureaucrat ) {
-    if (mIsSigned)
-        throw FormAlreadySigned{"form is already signed!"};
-    else if (bureaucrat.getGrade() > mGradeToSign)
+    if ( mIsSigned )
+        throw FormAlreadySigned{ "form is already signed!" };
+    else if ( bureaucrat.getGrade() > mGradeToSign )
         throw GradeTooLowException{ "the bureacrat's grade is too low to sign this form!" };
     else
         mIsSigned = true;

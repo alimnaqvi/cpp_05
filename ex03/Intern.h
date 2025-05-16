@@ -7,7 +7,7 @@
 #include "PresidentialPardonForm.h"
 #include <string>
 #include <exception>
-#include <cctype> // for std::toupper
+#include <cctype>  // for std::toupper
 
 class AForm;
 class ShrubberyCreationForm;
@@ -34,7 +34,7 @@ class Intern {
       private:
         const std::string mError{};
     };
-  
+
   private:
     AForm* mKnownForms[3];
 };

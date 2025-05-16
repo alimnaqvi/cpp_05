@@ -29,7 +29,7 @@ int main() {
 
         abcdef = randomIntern1.makeForm( "something something", "someone" );
 
-        std::cout << "This and below won't be reached because the previous line with throw an exception." << '\n';
+        std::cout << "This and below won't be reached because the previous line will throw an exception." << '\n';
         delete abcdef;
         abcdef = randomIntern2.makeForm( "abcdef", "hello" );
         delete abcdef;
