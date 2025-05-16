@@ -21,7 +21,7 @@ class Intern {
     ~Intern();
 
     // Main ability of intern
-    AForm* makeForm( std::string_view formName, std::string_view targetName );
+    AForm* makeForm( std::string_view formName, std::string_view targetName ) const;
 };
 
 #endif /* INTERN_H */
