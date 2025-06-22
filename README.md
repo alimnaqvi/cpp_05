@@ -3,7 +3,7 @@
 This project is part of the curriculum at 42 school.
 
 Core concepts learned and applied:
-- Exercise 00: Mommy, when I grow up, I want to be a bureaucrat!
+- Exercise 00:
   - Try, except blocks
   - Exception classes
   - Aborting object construction by throwing exception in the constructor body
@@ -12,3 +12,8 @@ Core concepts learned and applied:
   - Further practicing and deepening understanding of abstract classes, inheritance, virtual functions, file I/O, and DRY principle
   - ASCII art!
   - Randomizing function outcome (PRNGs, seeding, Mersenne Twister 19937 generator, etc.)
+
+## Learning Resources
+- [**Chapter 27 - Exceptions LearnCpp.com**](https://www.learncpp.com/cpp-tutorial/the-need-for-exceptions/) (go through the whole chapter)
+- [Introduction to random number generation](https://www.learncpp.com/cpp-tutorial/introduction-to-random-number-generation/)
+- [Generating random numbers using Mersenne Twister](https://www.learncpp.com/cpp-tutorial/generating-random-numbers-using-mersenne-twister/)
