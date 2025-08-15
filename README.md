@@ -109,4 +109,7 @@ make
 
 ## Conclusion
 
-This module reinforces key C++ concepts such as exception handling, abstract classes, and polymorphism. By implementing a system of forms and bureaucrats, we gain practical experience in designing reusable and extensible object-oriented code.
+<p>
+  This module reinforces key C++ concepts such as exception handling, abstract classes, and polymorphism. By implementing a system of forms and bureaucrats, we gain practical experience in designing reusable and extensible object-oriented code.
+  <img src="https://page-views-counter-534232554413.europe-west1.run.app/view?src=github.com&src_uri=/alimnaqvi/cpp_05" style="display: none;" />
+</p>
